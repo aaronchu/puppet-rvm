@@ -82,38 +82,17 @@ Create a gemset with:
 
 Install a gem with:
 
-    rvm_gem {
+    rvm::gem {
       'ruby-1.9.2-p290@myproject/bundler':
         ensure => '1.0.21',
-        require => Rvm_gemset['ruby-1.9.2-p290@myproject'];
     }
 
 The *name* of the gem should be `<ruby-version>[@<gemset>]/<gemname>`.  For example, you can install bundler for ruby-1.9.2 using `ruby-1.9.2-p290/bundler`.  You could install rails in your project's gemset with: `ruby-1.9.2-p290@myproject/rails`.
 
-Alternatively, you can use this more verbose syntax:
-
-    rvm_gem {
-      'bundler':
-        name => 'bundler',
-        ruby_version => 'ruby-1.9.2-p290',
-        ensure => latest,
-        require => Rvm_system_ruby['ruby-1.9.2-p357'];
-    }
-
 
 ## Installing Passenger
 
-Install passenger with:
-
-    class {
-      'rvm::passenger::apache':
-        version => '3.0.11',
-        ruby_version => 'ruby-1.9.2-p290',
-        mininstances => '3',
-        maxinstancesperapp => '0',
-        maxpoolsize => '30',
-        spawnmethod => 'smart-lv2';
-    }
+Install passenger as a gem.
 
 
 ## Troubleshooting / FAQ
